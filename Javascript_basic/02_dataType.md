@@ -39,7 +39,7 @@ console.log(message4);
 
 `message4`처럼 `${}` 안에 바로 표현식을 사용할 수도 있다.
 
-</br />
+<br />
 
 ## 숫자형 Number
 
