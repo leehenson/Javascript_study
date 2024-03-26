@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        border: 4px solid #000;
+      }
+      .bg-red {
+        background-color: #f00;
+      }
+      .bg-green {
+        background-color: #0f0;
+      }
+      .bg-blue {
+        background-color: #00f;
+      }
+      .txt-white {
+        color: #fff;
+      }
+      .txt-yellow {
+        color: #ff0;
+      }
+      .txt-pink {
+        color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box" class="box bg-red">BOX</div>
+    <ul id="color">
+      <li>Red</li>
+      <li>Green</li>
+      <li>Blue</li>
+    </ul>
+    <script>
+      const box = document.getElementById('box');
+      const color = document.getElementById('color');
+
+      color.onclick = function (e) {
+        const target = e.target;
+        if (target.tagName !== 'LI') return;
+        target.classList.toggle('txt-pink');
+      };
+    </script>
+  </body>
+</html>
