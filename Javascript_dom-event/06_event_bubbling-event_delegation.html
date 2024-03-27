@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome</title>
+    <style>
+      body {
+        padding: 20px;
+      }
+
+      #box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 50px;
+        width: 300px;
+        height: 300px;
+        border: 2px solid #000;
+        background-color: green;
+      }
+
+      #list {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        width: 200px;
+        height: 200px;
+        border: 2px solid #000;
+        background-color: orange;
+      }
+
+      #color {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100px;
+        height: 100px;
+        border: 2px solid #000;
+        background-color: yellow;
+      }
+
+      #box2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 50px;
+        width: 300px;
+        height: 100px;
+        border: 2px solid #000;
+        background-color: green;
+      }
+
+      #box3 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 50px;
+        width: 300px;
+        height: 300px;
+        border: 2px solid #000;
+        background-color: green;
+      }
+
+      #list2 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        width: 200px;
+        height: 200px;
+        border: 2px solid #000;
+        background-color: orange;
+      }
+
+      li {
+        display: flex;
+        align-items: center;
+        padding-left: 10px;
+        width: 150px;
+        height: 40px;
+        background-color: yellow;
+        border: 2px solid #000;
+      }
+
+      .on {
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box">
+      <ul id="list">
+        <li id="color">Red</li>
+      </ul>
+    </div>
+
+    <div id="box2">
+      <input type="text" id="txt" />
+    </div>
+
+    <div id="box3">
+      <ul id="list2">
+        <li id="red" class="on"><a href="#">Red</a></li>
+        <li id="blue"><a href="#">Blue</a></li>
+        <li id="green"><a href="#">green</a></li>
+        <li id="pink"><a href="#">Pink</a></li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    const box = document.getElementById('box');
+    const list = document.getElementById('list');
+    const color = document.getElementById('color');
+
+    // document.body.addEventListener('click', () => {
+    //   console.log('1. body');
+    // });
+    // box.addEventListener('click', () => {
+    //   console.log('2. div');
+    // });
+    // list.addEventListener('click', () => {
+    //   console.log('3. ul');
+    // });
+    // color.addEventListener('click', () => {
+    //   console.log('4. li');
+    // });
+
+    const box2 = document.getElementById('box2');
+    const txt = document.getElementById('txt');
+
+    document.body.addEventListener('focusin', () => {
+      console.log('focusin - 1. body');
+    });
+
+    box2.addEventListener('focusin', () => {
+      console.log('focusin - 2. div');
+    });
+
+    txt.addEventListener('focusin', (event) => {
+      event.stopPropagation();
+      console.log('focusin - 3. input');
+    });
+
+    document.body.addEventListener('focusout', () => {
+      console.log('focusout - 1. body');
+    });
+
+    box2.addEventListener('focusout', () => {
+      console.log('focusout - 2. div');
+    });
+
+    txt.addEventListener('focusout', (event) => {
+      event.stopPropagation();
+      console.log('focusout - 3. input');
+    });
+
+    const list2 = document.getElementById('list2');
+    const colors = list2.children;
+
+    function clickHandler(event) {
+      let target = event.target;
+      if (target.tagName === 'A') {
+        target = target.parentElement;
+      } else if (target === event.currentTarget) {
+        return;
+      }
+      for (c of colors) {
+        c.classList.remove('on');
+      }
+      target.classList.add('on');
+    }
+
+    // document.getElementById('red').addEventListener('click', clickHandler);
+    // document.getElementById('blue').addEventListener('click', clickHandler);
+    // document.getElementById('green').addEventListener('click', clickHandler);
+    // document.getElementById('pink').addEventListener('click', clickHandler);
+    document.getElementById('list2').addEventListener('click', clickHandler);
+  </script>
+</html>
